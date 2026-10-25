@@ -1,0 +1,61 @@
+/* Ensure the body takes up the full viewport and has a background */
+body {
+    margin: 0;
+    background-color: #000;
+    color: #fff;
+}
+
+/* 1. The Banner Container */
+.banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    position: relative; /* Crucial for absolute positioning of ::before */
+    overflow: hidden; /* Recommended to prevent potential mask bleed */
+}
+
+/* 2. The Content Layer (Text) */
+.banner .content {
+    /* Ensures the text is centered and clearly visible */
+    text-align: center;
+    z-index: 10; /* Ensures content is above the -1 z-index of the mask */
+}
+
+.banner .content .title {
+    /* Using a fallback font if 'Hallowed Grounds' is not available */
+    font-family: 'Hallowed Grounds', sans-serif;
+    font-size: 9em;
+    margin-bottom: 0.1em;
+    line-height: 1;
+}
+
+/* 3. The Masking Layer (::before) */
+.banner::before {
+    content: '';
+    position: absolute;
+    inset: 0; /* Shorthand for top, right, bottom, left: 0; */
+    
+    /* Background Image Settings (The content that is revealed) */
+    background-image: url('bg.jpg'); /* REPLACE with your static background image path */
+    background-size: cover;
+    background-position: center;
+    
+    /* Z-index places this layer behind the main content (which has the default z-index of 0 or higher) */
+    z-index: -1;
+
+    /* CSS Masking Properties (The animated reveal) */
+    mask-image: url('rename.gif'); /* REPLACE with your animated GIF path */
+    mask-size: cover;
+    mask-position: center;
+
+    /* Add vendor prefix for better browser compatibility (especially WebKit/Safari) */
+    -webkit-mask-image: url('rename.gif'); 
+    -webkit-mask-size: cover;
+    -webkit-mask-position: center;
+    
+    /* Optional: Hide the mask itself by making it transparent/black in the original GIF for best results */
+}
+/* https://www.videezy.com/free-video/ink */
+/* 123apps cuts video  */
+/* ezgif.com */

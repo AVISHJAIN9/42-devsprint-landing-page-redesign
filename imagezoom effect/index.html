@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        #imagezoom{
+            width:550px;
+            height:700px;
+            border: 5px solid red;
+            position: relative;
+        }
+        #imagezoom img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            object-position: 0 0  ;
+        }
+        #imagezoom ::after{
+            display: var(--display);
+            content: '';
+            width:100%;
+            height:100%;
+            background-color: black;
+            background-image: var(--url);
+            background-size:200%;
+            background-position: var(--zoom-x) var(--zoom-y);
+            position: absolute;
+            left:0;
+            top:0;
+        }
+
+    </style>
+    <div id = "imagezoom" style="
+    --url:url(yourimage-url.jpg)
+    --zoom-x :0%; --zoom-y: 0%;
+    --display:none;
+    ">
+        <img src = "your-image-url.jpg" alt = "hello">
+    </div>
+    <script>
+        let imagezoom = document.getElementById('imagezoom');
+        imagezoom.addEventListener('mousemove',(event) =>{
+            image.style.setproperty('--display','block');
+            let pointer ={
+                x: (event.offsetX *100)/imagezoom.offsetWidth,
+                y: (event.offsetY *100)/imagezoom.offsetWidth
+            }
+            imagezoom.style.setProperty('--zoom-x', pointer.x +'%');
+            imagezoom.style.setProperty('--zoom-y', pointer.y + '%');
+            console.log(pointer)
+        })
+        imagezoom.addEventListener('mouseout',()=>{
+            imagezoom.style.setProperty('--display','none');
+        })
+    </script>
+</body>
+</html>

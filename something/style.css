@@ -1,0 +1,10 @@
+/* 1st methos.list:hover .items{
+    filter :greyscale(1) blur (10px);
+}
+.list:hover .list:hover{
+    filter:none;
+} */
+ /* 2ns method */
+ .list:hover .item:not(:hover){
+    filter: grayscale(1) blur(10px);
+ }

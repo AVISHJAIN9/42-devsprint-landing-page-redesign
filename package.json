@@ -1,0 +1,16 @@
+{
+  "name": "48-devsprint-landing-page-redesign",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DevSprint Motion Lab - Creative Frontend Engineering & Micro-Interactions",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.3",
+    "mermaid": "^11.4.1",
+    "vitepress-plugin-mermaid": "^2.0.17"
+  }
+}
